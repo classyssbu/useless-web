@@ -1,0 +1,430 @@
+:root {
+  --shell-blue: #365bb2;
+  --panel-blue: #83d0e8;
+  --display-blue: #75afd8;
+  --number-green: #43aa4b;
+  --operator-blue: #2868d5;
+  --white: #ffffff;
+  --dark-blue: #173c87;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Cal Sans", sans-serif;
+  color: #080808;
+}
+
+button {
+  font: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 24px;
+  background: #05b9d5 url("background.jpg") center / cover fixed no-repeat;
+}
+
+.site-layout {
+  width: min(100%, 1100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+/* Main calculator shell */
+.calculator {
+  position: relative;
+  width: min(78vw, 800px);
+  min-width: 570px;
+  padding: 44px 6%;
+  border: 0;
+  border-radius: 54px;
+  background: var(--shell-blue);
+  box-shadow: 0 12px 24px rgba(0, 31, 87, 0.45);
+}
+
+.calculator-panel {
+  padding: 26px;
+  border-radius: 48px;
+  background: var(--panel-blue);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.display {
+  min-height: 172px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  margin-bottom: 16px;
+  padding: 20px 28px;
+  border: 3px solid #168bdc;
+  border-radius: 58px;
+  background: var(--display-blue);
+  box-shadow: inset 0 5px 16px rgba(0, 53, 116, 0.25);
+  font-size: clamp(28px, 4vw, 48px);
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(58px, 1fr));
+  gap: 14px;
+}
+
+.keypad button {
+  min-width: 0;
+  min-height: 66px;
+  border: 0;
+  border-radius: 19px;
+  background: var(--number-green);
+  color: var(--white);
+  font-size: clamp(25px, 3.2vw, 42px);
+  cursor: pointer;
+  box-shadow: inset 0 3px 4px rgba(255, 255, 255, 0.28);
+  transition: filter 0.12s ease, transform 0.12s ease;
+}
+
+.keypad button:hover {
+  filter: brightness(1.08);
+}
+
+.keypad button:active {
+  transform: scale(0.96);
+}
+
+.keypad button:focus-visible,
+.subscribe-button:focus-visible,
+.close-button:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 3px;
+}
+
+.keypad .operator,
+.keypad .backspace,
+.keypad .equals {
+  background: var(--operator-blue);
+}
+
+.keypad .equals {
+  grid-column: 5;
+  grid-row: 2 / span 3;
+  font-size: 42px;
+}
+
+.keypad .backspace {
+  font-size: 38px;
+}
+
+.decoration {
+  position: absolute;
+  z-index: 2;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(2px 4px 3px rgba(0, 0, 0, 0.35));
+}
+
+.fish {
+  width: 23%;
+  top: -2%;
+  left: -10%;
+}
+
+.disc {
+  width: 12%;
+  top: 53%;
+  left: -5%;
+}
+
+.star {
+  width: 18%;
+  bottom: -3%;
+  left: -8%;
+}
+
+.speech {
+  width: 15%;
+  top: 35%;
+  right: -7%;
+}
+
+.cursor {
+  width: 13%;
+  bottom: 3%;
+  right: -7%;
+}
+
+.wifi-decoration {
+  position: absolute;
+  z-index: 2;
+  top: -7%;
+  right: -5%;
+  color: #63d95f;
+  font-family: Arial, sans-serif;
+  font-size: 76px;
+  font-weight: bold;
+  transform: rotate(-90deg);
+  text-shadow: 2px 4px 2px rgba(0, 0, 0, 0.35);
+}
+
+.ads {
+  width: 190px;
+  flex: 0 0 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ad-card {
+  padding: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 5px 12px rgba(0, 35, 75, 0.2);
+  font-size: 14px;
+}
+
+.ad-card strong {
+  font-size: 17px;
+}
+
+.ad-card p {
+  margin: 8px 0;
+  line-height: 1.35;
+}
+
+.ad-label {
+  color: #666;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.ad-link {
+  color: #155cb5;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 20px;
+  background: rgba(0, 20, 50, 0.48);
+  backdrop-filter: blur(5px);
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.subscription-card {
+  position: relative;
+  width: min(100%, 410px);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  padding: 28px;
+  border-radius: 32px;
+  background: #fff;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+  position: absolute;
+  top: 9px;
+  right: 12px;
+  min-height: 32px;
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  color: #222;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.eyebrow,
+.upgrade-label {
+  margin-bottom: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.subscription-card h2,
+.intro {
+  text-align: center;
+}
+
+.subscription-card h2 {
+  margin: 8px 0;
+  font-size: 25px;
+}
+
+.subscription-card p {
+  line-height: 1.4;
+}
+
+.upgrade-label {
+  margin-top: 18px;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+
+.price {
+  margin: 4px 0 0;
+  text-align: center;
+}
+
+.price strong {
+  display: block;
+  font-size: 34px;
+}
+
+.price span {
+  display: block;
+  font-size: 13px;
+}
+
+.complexity-note {
+  margin: 5px 0 14px;
+  color: #666;
+  text-align: center;
+  font-size: 12px;
+}
+
+.subscribe-button {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  margin: 0 auto 18px;
+  border: 0;
+  border-radius: 30px;
+  background: linear-gradient(100deg, #269fda, #69c96c);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.subscription-card hr {
+  border: 0;
+  border-top: 2px solid #bbb;
+  margin: 18px 0;
+}
+
+.subscription-card h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.subscription-card ul {
+  margin: 0;
+  padding-left: 22px;
+  line-height: 1.55;
+  font-size: 14px;
+}
+
+.subscription-message {
+  min-height: 18px;
+  margin: 12px 0 0;
+  color: #555;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .site-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .calculator {
+    width: min(100%, 760px);
+    min-width: 0;
+  }
+
+  .ads {
+    width: min(100%, 760px);
+    flex: auto;
+    flex-direction: row;
+  }
+
+  .ad-card {
+    flex: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 45px 12px 24px;
+  }
+
+  .calculator {
+    padding: 22px 4%;
+    border-radius: 30px;
+  }
+
+  .calculator-panel {
+    padding: 14px;
+    border-radius: 25px;
+  }
+
+  .display {
+    min-height: 105px;
+    border-radius: 30px;
+  }
+
+  .keypad {
+    gap: 8px;
+    grid-template-rows: repeat(4, minmax(48px, 1fr));
+  }
+
+  .keypad button {
+    min-height: 48px;
+    border-radius: 12px;
+  }
+
+  .keypad .equals {
+    font-size: 30px;
+  }
+
+  .fish { width: 25%; left: -5%; top: -4%; }
+  .disc { width: 13%; left: -3%; }
+  .star { width: 18%; left: -4%; }
+  .speech { width: 17%; right: -4%; }
+  .cursor { width: 14%; right: -3%; }
+  .wifi-decoration { font-size: 50px; right: -2%; }
+
+  .ads {
+    flex-direction: column;
+  }
+
+  .subscription-card {
+    padding: 25px 20px;
+  }
+}

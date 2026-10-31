@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Calculator</title>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <div class="site-layout">
+
+      <section class="calculator" aria-label="Calculator">
+        <div class="calculator-panel">
+          <h1 class="sr-only">Calc+ Calculator</h1>
+
+          <div id="display" class="display" aria-live="polite">0</div>
+
+          <div class="keypad" id="keypad">
+            <button type="button" data-value="7">7</button>
+            <button type="button" data-value="8">8</button>
+            <button type="button" data-value="9">9</button>
+            <button type="button" data-value="/" class="operator">/</button>
+            <button type="button" data-action="backspace" class="backspace" aria-label="Backspace">⌫</button>
+
+            <button type="button" data-value="4">4</button>
+            <button type="button" data-value="5">5</button>
+            <button type="button" data-value="6">6</button>
+            <button type="button" data-value="*" class="operator">×</button>
+            <button type="button" data-action="equals" class="equals">=</button>
+
+            <button type="button" data-value="1">1</button>
+            <button type="button" data-value="2">2</button>
+            <button type="button" data-value="3">3</button>
+            <button type="button" data-value="+" class="operator">+</button>
+
+            <button type="button" data-action="clear">C</button>
+            <button type="button" data-value="0">0</button>
+            <button type="button" data-value=".">.</button>
+            <button type="button" data-value="-" class="operator">-</button>
+          </div>
+        </div>
+
+        <img class="decoration fish" src="fish.png" alt="">
+        <img class="decoration disc" src="disc.webp" alt="">
+        <img class="decoration star" src="star.png" alt="">
+        <img class="decoration speech" src="speech.png" alt="">
+        <img class="decoration cursor" src="cursor.png" alt="">
+        <div class="wifi-decoration" aria-hidden="true">)))</div>
+      </section>
+
+      <aside class="ads" aria-label="Advertisements">
+        <div class="ad-card">
+          <p class="ad-label">ADVERTISEMENT</p>
+          <strong>Need more storage?</strong>
+          <p>CloudBox keeps all your important files safe. Probably.</p>
+          <a href="#" class="ad-link">Explore CloudBox →</a>
+        </div>
+        <div class="ad-card second-ad">
+          <p class="ad-label">ADVERTISEMENT</p>
+          <strong>Upgrade your hydration.</strong>
+          <p>Introducing H₂Whoa! Water that tastes like water.</p>
+          <a href="#" class="ad-link">Drink better →</a>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="subscription-overlay" class="overlay" hidden>
+    <section class="subscription-card" role="dialog" aria-modal="true" aria-labelledby="subscription-title">
+      <button type="button" id="close-popup" class="close-button" aria-label="Close subscription prompt">×</button>
+
+      <p class="eyebrow">CALC+ PREMIUM</p>
+      <h2 id="subscription-title">Your answer is ready.</h2>
+      <p class="intro">Unfortunately, viewing your result is a <strong>Premium feature.</strong></p>
+
+      <p class="upgrade-label">Upgrade to Premium</p>
+      <p class="price"><strong id="price-value">$29.99</strong><span>per month</span></p>
+      <p id="complexity-note" class="complexity-note">Standard calculation pricing</p>
+      <button type="button" id="subscribe-button" class="subscribe-button">Subscribe Now!</button>
+
+      <hr>
+      <h3>Exclusive Premium benefits include:</h3>
+      <ul>
+        <li>See your calculation results</li>
+        <li>Unlimited access to the equals button</li>
+        <li>Faster access to your answers</li>
+        <li>Save your calculation history</li>
+        <li>Ad-free calculating</li>
+        <li>Unlock advanced addition</li>
+        <li>Premium decimal support</li>
+        <li>Calculate on up to 3 devices</li>
+      </ul>
+      <p id="subscription-message" class="subscription-message" aria-live="polite"></p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
